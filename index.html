@@ -1,0 +1,1100 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TRIAD // X PUFF</title>
+  
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  
+  <!-- Lucide Icons CDN -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <script>
+    // CONFIGURATION AND DATA CONSTANTS
+    const APP_CONFIG = {
+      splashImgSrc: 'https://jolly-lime-mtrovsqdnn.edgeone.app/render2-ezgif.com-optimize-1.gif',
+      customBackgroundImg: 'https://jolly-lime-mtrovsqdnn.edgeone.app/render2-ezgif.com-optimize-1.gif',
+      bgMusicUrl: 'https://videotourl.com/audio/1778922843847-ac375c0b-d839-40e8-9e9a-ff7d070c725c.mp3' 
+    };
+
+    const THREAT_ITEMS = [
+      { id: 't1', title: 'YVES', subtitle: 'founder', bannerImg: 'https://user11379.na.imgto.link/public/20260518/95b91af482446975e630077533da0f4b.avif', soundSrc: 'https://www.image2url.com/r2/default/files/1779008778166-6622b4d5-9d78-414f-b2b4-89d6d79e1838.mp3' },
+      { id: 't2', title: 'YSA', subtitle: 'bobo ka tol', bannerImg: 'https://user11379.na.imgto.link/public/20260518/3eccaf2cb06a4fc838787788c28c5312.avif', soundSrc: 'https://www.image2url.com/r2/default/files/1779008778166-6622b4d5-9d78-414f-b2b4-89d6d79e1838.mp3' },
+      { id: 't3', title: 'FOKO', subtitle: 'bobo ka tol', bannerImg: 'https://user11379.na.imgto.link/public/20260518/abe660b8e7bf42c0ac58e7f9997d3703.avif', soundSrc: 'https://www.image2url.com/r2/default/files/1779008778166-6622b4d5-9d78-414f-b2b4-89d6d79e1838.mp3' },
+      { id: 't4', title: 'COSTA', subtitle: 'bobo ka tol', bannerImg: 'https://user11379.na.imgto.link/public/20260518/e53255c584f030247eab786003617133.avif', soundSrc: 'https://www.image2url.com/r2/default/files/1779008778166-6622b4d5-9d78-414f-b2b4-89d6d79e1838.mp3' }
+    ];
+
+    const EXECUTIVE_ITEMS = [
+      { id: 'm1', title: 'fallen', subtitle: 'bobo ka tol', bannerImg: 'https://user11379.na.imgto.link/public/20260518/2b3e76332a58c2344a715140c2e20280.avif', soundSrc: 'https://www.image2url.com/r2/default/files/1779008778166-6622b4d5-9d78-414f-b2b4-89d6d79e1838.mp3' },
+      { id: 'm2', title: 'JIN', subtitle: 'bobo ka tol', bannerImg: 'https://user11379.na.imgto.link/public/20260518/e5e0e9b264b91bab1915c023e946eae8.avif', soundSrc: 'https://www.image2url.com/r2/default/files/1779008778166-6622b4d5-9d78-414f-b2b4-89d6d79e1838.mp3' }
+    ];
+
+    const EXCLUSIVE_DATA = [
+      { id: 'mem1', name: 'ANAK NI DEVILISH', role: 'Lead Developer', avatar: 'https://user11379.na.imgto.link/public/20260518/27b66bc8225805c951b618dac81d1d67.avif', soundSrc: 'https://www.image2url.com/r2/default/files/1779008845662-e4240e35-e807-4733-b441-5048d5e2405b.mp3' },
+      { id: 'mem2', name: 'SATO', role: 'snz', avatar: 'https://user11379.na.imgto.link/public/20260518/52d5fb71e09d4757efbf31b785061035.avif', soundSrc: 'https://www.image2url.com/r2/default/files/1779008845662-e4240e35-e807-4733-b441-5048d5e2405b.mp3' },
+      { id: 'mem3', name: 'RORO', role: 'snz', avatar: 'https://user11379.na.imgto.link/public/20260518/desktop-wallpaper-sasuke-purple-sasuke.avif', soundSrc: 'https://www.image2url.com/r2/default/files/1779008845662-e4240e35-e807-4733-b441-5048d5e2405b.mp3' },
+      { id: 'mem4', name: 'HIZO', role: 'snz', avatar: 'https://drift.rip/media/users/avatars/avatar_1034_686f37ec1118d6.43334143.webp', soundSrc: 'https://www.image2url.com/r2/default/files/1779008845662-e4240e35-e807-4733-b441-5048d5e2405b.mp3' },
+      { id: 'mem5', name: 'PATSU', role: 'snz', avatar: 'https://user11379.na.imgto.link/public/20260518/original-4.avif', soundSrc:'https://www.image2url.com/r2/default/files/1779008845662-e4240e35-e807-4733-b441-5048d5e2405b.mp3'},
+      { id: 'mem6', name: 'SEBS', role: 'triad', avatar: 'https://user11379.na.imgto.link/public/20260518/482a3c15bbe9993264c2c8dd61de2e3d.avif', soundSrc: 'https://www.image2url.com/r2/default/files/1779008845662-e4240e35-e807-4733-b441-5048d5e2405b.mp3' }
+    ];
+
+    // Tailwind Configuration
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            accent: '#ff0000',
+            pink: '#ec4899',
+          },
+          fontFamily: {
+            sans: ['Inter', 'system-ui', 'sans-serif'],
+            mono: ['Courier New', 'Courier', 'monospace'],
+            display: ['Impact', 'Arial Black', 'sans-serif'],
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    /* Splash Screen Transitions */
+    .splash-exit {
+      opacity: 0 !important;
+      transform: scale(1.1) !important;
+      pointer-events: none;
+    }
+    
+    .fade-in-on-enter {
+      opacity: 0;
+      transition: opacity 1s ease-out;
+    }
+    .fade-in-on-enter.active {
+      opacity: 1;
+    }
+
+    /* Scanline Animation Effects */
+    @keyframes scanline {
+      0% { transform: translateY(-100%); }
+      100% { transform: translateY(100vh); }
+    }
+    .animate-scanline { animation: scanline 4s linear infinite; }
+
+    @keyframes pulse-custom {
+      0%, 100% { opacity: 1; }
+      50% { opacity: .5; }
+    }
+    .animate-pulse-custom { animation: pulse-custom 2s infinite; }
+
+    /* Frosted Glass Base */
+    .glass {
+      background: rgba(255, 255, 255, 0.03);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+    }
+    
+    body.no-scroll { overflow: hidden; }
+  </style>
+</head>
+<body class="bg-black text-white font-sans selection:bg-accent selection:text-white relative no-scroll">
+
+  <!-- 1. SPLASH SCREEN LAYER -->
+  <div id="splash-screen" class="fixed inset-0 z-[100] bg-black flex flex-col justify-center items-center overflow-hidden cursor-pointer transition-all duration-1000">
+    <div class="absolute inset-0 z-0 opacity-40 pointer-events-none">
+      <div class="absolute inset-0 bg-[linear-gradient(to_right,#ff000012_1px,transparent_1px),linear-gradient(to_bottom,#ff000012_1px,transparent_1px)] bg-[size:40px_40px]"></div>
+      <div class="absolute inset-0 bg-gradient-to-t from-black via-red-950/5 to-black"></div>
+    </div>
+
+    <div id="splash-content" class="relative z-10 flex flex-col items-center max-w-md w-full px-8 transition-transform duration-1000">
+      <!-- Generated Dynamically by script -->
+    </div>
+
+    <!-- UI Metadata details -->
+    <div class="absolute bottom-12 left-12 font-mono text-[10px] text-white/10 uppercase space-y-2 hidden md:block">
+      <div>[ STATUS: SYNDICATE_READY ]</div>
+      <div>[ AUTH: ADMIN_LEVEL_4 ]</div>
+      <div>[ NETWORK: ENCRYPTED_MESH ]</div>
+    </div>
+    <div class="absolute bottom-12 right-12 font-mono text-[10px] text-white/10 uppercase hidden md:block">
+      V.0.4.2 // TRIAD_OS
+    </div>
+
+    <div class="absolute inset-0 pointer-events-none overflow-hidden opacity-5">
+      <div class="w-full h-[1px] bg-accent animate-scanline"></div>
+    </div>
+  </div>
+
+  <!-- 2. MAIN APPLICATION LAYER -->
+  <div id="main-content" class="fade-in-on-enter hidden relative min-h-screen">
+    
+    <!-- Ambient Background Media and Blending Filters -->
+    <div id="global-bg" class="fixed inset-0 z-[-1] pointer-events-none opacity-100 bg-cover bg-center bg-fixed transition-all duration-700"></div>
+    <div class="fixed inset-0 z-[-1] pointer-events-none bg-gradient-to-r from-accent/40 via-black/60 to-black/90 mix-blend-multiply"></div>
+    <div class="fixed inset-0 z-[-1] pointer-events-none bg-gradient-to-r from-accent/10 to-transparent opacity-50"></div>
+
+    <!-- MAIN INTERFACE HEADER -->
+    <nav class="fixed top-0 inset-x-0 z-50 glass border-b border-white/5 px-6 py-4 flex items-center justify-between">
+      <div class="font-display font-black text-xl tracking-tighter uppercase">TRI<span class="text-accent">AD</span></div>
+      <div class="hidden md:flex items-center gap-8 font-mono text-xs tracking-widest uppercase text-white/60">
+        <a href="#hof" class="hover:text-white transition-colors">HOF</a>
+        <a href="#threat" class="hover:text-white transition-colors">HALL OF SHAME</a>
+        <a href="#menace" class="hover:text-white transition-colors">EXECUTIVE</a>
+        <a href="#members" class="hover:text-white transition-colors">EXCLUSIVE</a>
+        <a href="#about" class="hover:text-white transition-colors">ABOUT US</a>
+      </div>
+    </nav>
+
+    <!-- MEDIA VOLUME TOGGLE CONTROLLER -->
+    <div class="fixed bottom-8 right-8 z-[60]">
+      <button id="mute-toggle" class="w-12 h-12 glass rounded-full flex items-center justify-center text-white border border-white/10 hover:border-accent hover:shadow-[0_0_15px_rgba(255,0,0,0.3)] transition-all">
+        <i data-lucide="volume-2" class="w-5 h-5"></i>
+      </button>
+    </div>
+
+    <!-- HERO PROFILE DISPLAY SECTION -->
+    <section id="hof" class="relative min-h-screen flex flex-col items-center justify-center pt-20 overflow-hidden bg-transparent">
+      <div class="absolute inset-0 bg-gradient-to-r from-accent/20 via-transparent to-transparent opacity-60 pointer-events-none"></div>
+      <div class="absolute inset-x-0 top-0 h-[70vh] bg-gradient-to-b from-black via-transparent to-transparent opacity-80 pointer-events-none"></div>
+      
+      <div class="relative z-10 max-w-7xl mx-auto px-6 text-center">
+        <div class="mb-8">
+          <h1 class="text-7xl sm:text-9xl md:text-[12rem] font-display font-black leading-[0.8] tracking-tighter uppercase text-white drop-shadow-2xl">
+            TRI<span class="text-accent">AD</span>
+          </h1>
+        </div>
+        <p class="max-w-2xl mx-auto text-lg sm:text-2xl text-neutral-400 font-medium leading-relaxed tracking-tight mb-12">
+          We are triad. We didn't enter this space to follow the rules—we entered it to understand the machine, master its code, and rebuild it from the root directory up.
+        </p>
+      </div>
+
+      <div class="absolute bottom-12 flex flex-col items-center gap-4 group">
+        <a href="#kupal" class="flex flex-col items-center gap-2 group">
+          <span class="text-[10px] font-bold tracking-[0.5em] text-white/40 uppercase group-hover:text-accent transition-colors">SCROLL</span>
+          <i data-lucide="chevron-down" class="w-8 h-8 text-white/20 group-hover:text-accent group-hover:translate-y-1 transition-all animate-bounce" stroke-width="1"></i>
+        </a>
+      </div>
+
+      <div class="absolute bottom-10 left-10 hidden xl:block opacity-50 animate-pulse">
+        <div class="text-[10px] font-mono text-white/20 uppercase tracking-[1em]" style="writing-mode: vertical-rl;">SYSTEM_STABLE</div>
+      </div>
+    </section>
+
+    <!-- CALL-TO-ACTION SYSTEM LINK -->
+    <section id="kupal" class="bg-black/60 backdrop-blur-md py-32 flex items-center justify-center border-t border-white/5">
+      <div id="kupal-interaction" class="cursor-pointer group relative">
+        <h2 class="text-5xl md:text-8xl font-display font-black text-white text-center uppercase tracking-tighter px-6 leading-none transition-transform group-hover:scale-105 duration-500">
+          TRIAD HAS ARRIVED <br />
+          <span class="text-accent">KUPAL KAME SAMA KABA?</span>
+        </h2>
+        <div class="absolute -bottom-10 left-1/2 -translate-x-1/2 w-24 h-[1px] bg-gradient-to-r from-transparent via-accent/20 to-transparent group-hover:via-accent transition-all"></div>
+      </div>
+    </section>
+
+    <!-- THREAT SYNDICATE SHOWCASE -->
+    <section id="threat" class="bg-black/60 backdrop-blur-md py-24 px-6 border-t border-white/5">
+      <div class="max-w-7xl mx-auto">
+        <h2 class="text-xs font-mono font-bold tracking-[0.4em] uppercase text-white/40 mb-12 flex items-center gap-3">
+          <span class="w-2 h-2 bg-accent inline-block"></span> HALL OF SHAME
+        </h2>
+        <div id="threat-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
+          <!-- Dynamically Generated -->
+        </div>
+      </div>
+    </section>
+
+    <!-- EXECUTIVE LEADERSHIP MODULE -->
+    <section id="menace" class="py-24 px-6 border-t border-white/5">
+      <div class="max-w-full mx-auto px-4">
+        <h2 class="text-xs font-mono font-bold tracking-[0.4em] uppercase text-white/40 mb-12 flex items-center gap-3">
+          <span class="w-2 h-2 bg-accent inline-block"></span> EXECUTIVE
+        </h2>
+        <div id="menace-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-12">
+          <!-- Dynamically Generated -->
+        </div>
+      </div>
+    </section>
+
+    <!-- EXCLUSIVE ELITE MEMBERSHIP -->
+    <section id="members" class="bg-black/60 backdrop-blur-md py-24 px-6 border-t border-white/5">
+      <div class="max-w-7xl mx-auto">
+        <h2 class="text-xs font-mono font-bold tracking-[0.4em] uppercase text-white/40 mb-12 flex items-center gap-3">
+          <span class="w-2 h-2 bg-accent inline-block"></span> EXCLUSIVE
+        </h2>
+        <div id="members-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
+          <!-- Dynamically Generated -->
+        </div>
+      </div>
+    </section>
+
+    <!-- PHILOSOPHY STATEMENT -->
+    <section id="about" class="bg-black/60 backdrop-blur-md py-32 px-6 border-t border-white/5">
+      <div class="max-w-4xl mx-auto">
+        <p class="text-2xl sm:text-4xl text-white font-medium leading-tight tracking-tight text-center">
+          triad is more than. To the legacy institutions still relying on outdated firewalls and bloated protocols: your time is ticking. The old paradigms are obsolete.
+        </p>
+      </div>
+    </section>
+
+    <!-- INTERFACE FOOTER -->
+    <footer class="py-20 bg-black/80 backdrop-blur-md border-t border-white/5 text-center text-white/30 font-mono text-xs uppercase tracking-[0.5em] px-6">
+      <div class="flex items-center justify-center gap-8 mb-12 opacity-50">
+        <a href="#" class="hover:text-accent transition-colors">DISCORD</a>
+        <a href="#" class="hover:text-accent transition-colors">X / TWITTER</a>
+        <a href="#" class="hover:text-accent transition-colors">OPENSEA</a>
+      </div>
+      <div>© 2026 TRIAD COLLECTIVE // ALL RIGHTS RESERVED</div>
+    </footer>
+
+  </div>
+
+  <!-- NATIVE AUDIO REPLICATORS -->
+  <audio id="main-audio" loop></audio>
+  <audio id="sfx-audio" src="https://assets.mixkit.co/active_storage/sfx/2568/2568-preview.mp3"></audio>
+
+  <!-- CONTROL LAYER FUNCTIONALITY -->
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      // Setup icons
+      lucide.createIcons();
+
+      const mainAudio = document.getElementById('main-audio');
+      const sfxAudio = document.getElementById('sfx-audio');
+      const muteToggleBtn = document.getElementById('mute-toggle');
+      
+      if(APP_CONFIG.bgMusicUrl) mainAudio.src = APP_CONFIG.bgMusicUrl;
+      if(APP_CONFIG.customBackgroundImg) {
+        document.getElementById('global-bg').style.backgroundImage = `url(${APP_CONFIG.customBackgroundImg})`;
+      }
+
+      let isMuted = false;
+
+      // Handle card selection sound effects and main track volume dip
+      const playInteractionSound = (customSound) => {
+        if (!isMuted) {
+          mainAudio.volume = 0.1; 
+        }
+        
+        if (customSound) sfxAudio.src = customSound;
+        sfxAudio.currentTime = 0;
+        sfxAudio.play().catch(e => console.warn("SFX failed:", e));
+
+        setTimeout(() => {
+          if (!isMuted) mainAudio.volume = 1.0; 
+        }, 1500);
+      };
+
+      // Splash Setup Block
+      const splashScreen = document.getElementById('splash-screen');
+      const splashContent = document.getElementById('splash-content');
+
+      if (APP_CONFIG.splashImgSrc) {
+        splashContent.innerHTML = `
+          <div class="w-full relative group">
+            <div class="absolute inset-0 bg-accent/10 blur-3xl rounded-full scale-110 opacity-0 group-hover:opacity-100 transition-opacity duration-1000"></div>
+            <img src="${APP_CONFIG.splashImgSrc}" alt="System Logo" class="w-full h-auto object-contain relative z-10 drop-shadow-[0_10px_30px_rgba(255,0,0,0.1)] group-hover:drop-shadow-[0_15px_40px_rgba(255,0,0,0.2)] transition-all duration-500 animate-pulse-custom" referrerpolicy="no-referrer" />
+            <div class="mt-8 text-center">
+              <span class="text-[10px] font-mono tracking-[0.5em] text-white/20 uppercase group-hover:text-accent transition-colors duration-500">CLICK TO INITIATE SYSTEM LINK</span>
+            </div>
+          </div>`;
+      } else {
+        splashContent.innerHTML = `
+          <div class="w-24 h-24 bg-accent rounded-2xl flex items-center justify-center text-4xl font-black transform -skew-x-12 mb-8 shadow-[0_10px_30px_rgba(0,51,255,0.2)]">
+            <span class="text-white">GJ</span>
+          </div>
+          <h1 class="text-4xl md:text-6xl font-display font-black tracking-tighter uppercase text-white mb-4">SYSTEM INITIATED</h1>
+          <p class="text-neutral-400 font-mono text-xs tracking-[0.4em] uppercase mb-12">Decrypting Core...</p>
+          <button class="group relative px-12 py-5 overflow-hidden rounded-full border border-white/10 transition-all hover:border-pink">
+            <div class="absolute inset-0 bg-pink translate-y-full group-hover:translate-y-0 transition-transform duration-500"></div>
+            <span class="relative z-10 font-display font-black text-sm tracking-[0.5em] uppercase text-white group-hover:text-white">CLICK TO ENTER</span>
+          </button>`;
+      }
+
+      // Initializing system link click handler
+      splashScreen.addEventListener('click', () => {
+        splashScreen.classList.add('splash-exit');
+        document.body.classList.remove('no-scroll');
+        
+        const mainContent = document.getElementById('main-content');
+        mainContent.classList.remove('hidden');
+        setTimeout(() => mainContent.classList.add('active'), 50);
+
+        mainAudio.play().catch(e => console.warn("Audio Context setup skipped until manual interface gesture occurs:", e));
+        
+        setTimeout(() => splashScreen.remove(), 1000);
+      });
+
+      // Volume controllers
+      muteToggleBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        isMuted = !isMuted;
+        mainAudio.muted = isMuted;
+        
+        if(isMuted) {
+          muteToggleBtn.innerHTML = `<i data-lucide="volume-x" class="w-5 h-5"></i>`;
+        } else {
+          muteToggleBtn.innerHTML = `<i data-lucide="volume-2" class="w-5 h-5 animate-pulse"></i>`;
+        }
+        lucide.createIcons();
+      });
+
+      document.getElementById('kupal-interaction').addEventListener('click', () => playInteractionSound());
+
+      // Grid Component Generators
+      const threatGrid = document.getElementById('threat-grid');
+      threatGrid.innerHTML = THREAT_ITEMS.map(item => `
+        <div class="group relative overflow-hidden rounded-xl border border-white/5 bg-zinc-900/40 backdrop-blur-sm cursor-pointer transition-all duration-300 hover:border-accent/40 hover:shadow-[0_0_30px_rgba(255,0,0,0.1)]" onclick="window.playCardItem('${item.soundSrc}')">
+          <div class="aspect-video w-full overflow-hidden relative">
+            <img src="${item.bannerImg}" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" alt="${item.title}" />
+            <div class="absolute inset-0 bg-gradient-to-t from-zinc-950 via-zinc-950/20 to-transparent"></div>
+          </div>
+          <div class="p-6 relative z-10">
+            <span class="text-[9px] font-mono tracking-widest text-accent uppercase block mb-1">${item.subtitle}</span>
+            <h3 class="text-xl font-bold uppercase tracking-tight text-white group-hover:text-accent transition-colors">${item.title}</h3>
+          </div>
+        </div>
+      `).join('');
+
+      const menaceGrid = document.getElementById('menace-grid');
+      menaceGrid.innerHTML = EXECUTIVE_ITEMS.map(item => `
+        <div class="group relative overflow-hidden rounded-2xl border border-white/5 bg-zinc-900/20 cursor-pointer h-[320px] transition-all duration-500 hover:border-accent/30" onclick="window.playCardItem('${item.soundSrc}')">
+          <img src="${item.bannerImg}" class="absolute inset-0 w-full h-full object-cover opacity-60 transition-transform duration-1000 group-hover:scale-105" alt="${item.title}" />
+          <div class="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent"></div>
+          <div class="absolute bottom-0 inset-x-0 p-10 z-10">
+            <span class="text-xs font-mono tracking-[0.3em] text-accent block mb-2 font-bold">${item.subtitle}</span>
+            <h3 class="text-3xl md:text-4xl font-display font-black uppercase text-white group-hover:text-accent transition-colors tracking-tight">${item.title}</h3>
+          </div>
+        </div>
+      `).join('');
+
+      const membersGrid = document.getElementById('members-grid');
+      membersGrid.innerHTML = EXCLUSIVE_DATA.map(member => `
+        <div class="glass border border-white/5 rounded-2xl p-8 flex flex-col items-center text-center cursor-pointer group transition-all duration-300 hover:border-accent/30 hover:bg-zinc-900/30" onclick="window.playCardItem('${member.soundSrc}')">
+          <div class="w-24 h-24 rounded-full overflow-hidden mb-6 p-1 bg-gradient-to-b from-white/10 to-transparent group-hover:from-accent/50 transition-all duration-500">
+            <img src="${member.avatar}" class="w-full h-full object-cover rounded-full filter grayscale group-hover:grayscale-0 transition-all duration-500" alt="${member.name}" />
+          </div>
+          <h3 class="text-xl font-mono font-bold uppercase tracking-wide text-white group-hover:text-accent transition-colors mb-1">${member.name}</h3>
+          <p class="text-xs font-mono tracking-widest text-neutral-500 uppercase">${member.role}</p>
+        </div>
+      `).join('');
+
+      // Dynamic scoping connection function for clicking cards
+      window.playCardItem = (sound) => {
+        playInteractionSound(sound);
+      };
+    });
+  </script>
+</body>
+</html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        :root {
+            --bg-color: #0a0a0c;
+            --card-bg: rgba(18, 18, 22, 0.65);
+            --card-border: rgba(255, 255, 255, 0.08);
+            --text-main: #ffffff;
+            --text-muted: #a0a0ab;
+            --accent-triad: #ff3e3e;
+            --accent-super: #ffb700;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background-color: var(--bg-color);
+            background-image: linear-gradient(rgba(10, 10, 12, 0.85), rgba(10, 10, 12, 0.85)), url('https://jolly-lime-mtrovsqdnn.edgeone.app/render2-ezgif.com-optimize-1.gif');
+            background-attachment: fixed;
+            background-size: cover;
+            background-position: center;
+            color: var(--text-main);
+            min-height: 100vh;
+            padding: 40px 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+        }
+
+        .section-heading {
+            font-size: 1.5rem;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 24px;
+            padding-bottom: 8px;
+            border-bottom: 2px solid rgba(255, 255, 255, 0.1);
+            color: #fff;
+        }
+
+        .section-heading.danger {
+            color: var(--accent-triad);
+            border-bottom-color: rgba(255, 62, 62, 0.2);
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 24px;
+            margin-bottom: 60px;
+        }
+
+        .card {
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 12px;
+            overflow: hidden;
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            transition: transform 0.2s ease, border-color 0.2s ease;
+            position: relative;
+        }
+
+        .card:hover {
+            transform: translateY(-4px);
+            border-color: rgba(255, 255, 255, 0.2);
+        }
+
+        .banner {
+            width: 100%;
+            height: 100px;
+            background-size: cover;
+            background-position: center;
+            background-image: url('https://jolly-lime-mtrovsqdnn.edgeone.app/render2-ezgif.com-optimize-1.gif');
+        }
+
+        .avatar-container {
+            position: relative;
+            width: 70px;
+            height: 70px;
+            margin: -35px 0 0 20px;
+        }
+
+        .avatar {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid #121216;
+            background-color: #1a1a22;
+        }
+
+        .card-content {
+            padding: 16px 20px 20px 20px;
+        }
+
+        .name-row {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 4px;
+        }
+
+        .name {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--text-main);
+        }
+
+        .badge {
+            font-size: 0.65rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            padding: 3px 8px;
+            border-radius: 20px;
+            letter-spacing: 1px;
+        }
+
+        .badge.triad {
+            background: rgba(255, 62, 62, 0.15);
+            color: var(--accent-triad);
+            border: 1px solid rgba(255, 62, 62, 0.3);
+        }
+
+        .badge.supertriad {
+            background: rgba(255, 183, 0, 0.15);
+            color: var(--accent-super);
+            border: 1px solid rgba(255, 183, 0, 0.3);
+        }
+
+        .description {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            margin-bottom: 16px;
+            font-style: italic;
+        }
+
+        .audio-player {
+            width: 100%;
+            height: 30px;
+            outline: none;
+            border-radius: 4px;
+        }
+
+        .discord-id {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            font-family: monospace;
+            background: rgba(0, 0, 0, 0.2);
+            padding: 4px 8px;
+            border-radius: 4px;
+            display: inline-block;
+            margin-top: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.03);
+        }
+
+        @media (max-width: 600px) {
+            .grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <!-- MOST DANGER ON TRIAD SECTION -->
+        <div class="section-heading danger">Most Danger On Triad</div>
+        <div class="grid">
+            <!-- JASSS -->
+            <div class="card">
+                <div class="banner"></div>
+                <div class="avatar-container">
+                    <img class="avatar" src="https://user11379.na.imgto.link/public/20260518/img-3919.avif" alt="JASS">
+                </div>
+                <div class="card-content">
+                    <div class="name-row">
+                        <span class="name">JASS</span>
+                        <span class="badge triad">triad</span>
+                    </div>
+                    <p class="description">bobo ka tol</p>
+                    <audio class="audio-player" controls src="https://www.image2url.com/r2/default/files/1779007047123-8e18f6a6-8943-4dce-8714-5313f813033e.mp3"></audio>
+                    <div class="discord-id">ID: 1499386404327919761</div>
+                </div>
+            </div>
+
+            <!-- aco -->
+            <div class="card">
+                <div class="banner"></div>
+                <div class="avatar-container">
+                    <img class="avatar" src="https://user11379.na.imgto.link/public/20260518/img-9173.avif" alt="aco">
+                </div>
+                <div class="card-content">
+                    <div class="name-row">
+                        <span class="name">aco</span>
+                        <span class="badge triad">triad</span>
+                    </div>
+                    <p class="description">bobo ka tol</p>
+                    <audio class="audio-player" controls src="https://www.image2url.com/r2/default/files/1779007047123-8e18f6a6-8943-4dce-8714-5313f813033e.mp3"></audio>
+                    <div class="discord-id">ID: 904357526290718740</div>
+                </div>
+            </div>
+
+            <!-- ZAYKO -->
+            <div class="card">
+                <div class="banner"></div>
+                <div class="avatar-container">
+                    <img class="avatar" src="https://drift.rip/media/users/avatars/avatar_798_684a1e829500f3.90956528.webp" alt="ZAYKO">
+                </div>
+                <div class="card-content">
+                    <div class="name-row">
+                        <span class="name">ZAYKO</span>
+                        <span class="badge triad">triad</span>
+                    </div>
+                    <p class="description">bobo ka tol</p>
+                    <audio class="audio-player" controls src="https://www.image2url.com/r2/default/files/1779007047123-8e18f6a6-8943-4dce-8714-5313f813033e.mp3"></audio>
+                </div>
+            </div>
+
+            <!-- yb.shnra -->
+            <div class="card">
+                <div class="banner"></div>
+                <div class="avatar-container">
+                    <img class="avatar" src="https://user11379.na.imgto.link/public/20260518/5b60fae96f95afec33d93b76a2090f69.avif" alt="shnra">
+                </div>
+                <div class="card-content">
+                    <div class="name-row">
+                        <span class="name">shnra</span>
+                        <span class="badge triad">triad</span>
+                    </div>
+                    <p class="description">bobo ka tol</p>
+                    <audio class="audio-player" controls src="https://www.image2url.com/r2/default/files/1779007047123-8e18f6a6-8943-4dce-8714-5313f813033e.mp3"></audio>
+                    <div class="discord-id">ID: 903645314509054004</div>
+                </div>
+            </div>
+
+            <!-- RHON -->
+            <div class="card">
+                <div class="banner"></div>
+                <div class="avatar-container">
+                    <img class="avatar" src="https://user11379.na.imgto.link/public/20260518/img-2142.avif" alt="RHON">
+                </div>
+                <div class="card-content">
+                    <div class="name-row">
+                        <span class="name">RHON</span>
+                        <span class="badge triad">triad</span>
+                    </div>
+                    <p class="description">bobo ka tol</p>
+                    <audio class="audio-player" controls src="https://www.image2url.com/r2/default/files/1779007047123-8e18f6a6-8943-4dce-8714-5313f813033e.mp3"></audio>
+                </div>
+            </div>
+        </div>
+
+        <!-- TRIAD MEMBERS SECTION -->
+        <div class="section-heading">Triad Members</div>
+        <div class="grid">
+            <!-- kazu -->
+            <div class="card">
+                <div class="banner"></div>
+                <div class="avatar-container">
+                    <img class="avatar" src="https://user11379.na.imgto.link/public/20260518/img-3289.avif" alt="kazu">
+                </div>
+                <div class="card-content">
+                    <div class="name-row">
+                        <span class="name">kazu</span>
+                        <span class="badge triad">triad</span>
+                    </div>
+                    <p class="description">bobo ka tol</p>
+                    <audio class="audio-player" controls src="https://www.image2url.com/r2/default/files/1779007076216-48c37c43-9b82-480d-9f5c-bf2c29b463ea.mp3"></audio>
+                    <div class="discord-id">ID: 638368279592960035</div>
+                </div>
+            </div>
+
+            <!-- kxto -->
+            <div class="card">
+                <div class="banner"></div>
+                <div class="avatar-container">
+                    <img class="avatar" src="https://drift.rip/media/users/avatars/avatar_1053_686d89e8c0dab9.22746488.webp" alt="kxto">
+                </div>
+                <div class="card-content">
+                    <div class="name-row">
+                        <span class="name">kxto</span>
+                        <span class="badge triad">triad</span>
+                    </div>
+                    <p class="description">bobo ka tol</p>
+                    <audio class="audio-player" controls src="https://www.image2url.com/r2/default/files/1779007076216-48c37c43-9b82-480d-9f5c-bf2c29b463ea.mp3"></audio>
+                    <div class="discord-id">ID: 766198062422163486</div>
+                </div>
+            </div>
+
+            <!-- red -->
+            <div class="card">
+                <div class="banner"></div>
+                <div class="avatar-container">
+                    <img class="avatar" src="https://user11379.na.imgto.link/public/20260518/img-0483.avif" alt="red">
+                </div>
+                <div class="card-content">
+                    <div class="name-row">
+                        <span class="name">red</span>
+                        <span class="badge triad">triad</span>
+                    </div>
+                    <p class="description">bobo ka tol</p>
+                    <audio class="audio-player" controls src="https://www.image2url.com/r2/default/files/1779007076216-48c37c43-9b82-480d-9f5c-bf2c29b463ea.mp3"></audio>
+                    <div class="discord-id">ID: 1422715006331654154</div>
+                </div>
+            </div>
+
+            <!-- draco -->
+            <div class="card">
+                <div class="banner"></div>
+                <div class="avatar-container">
+                    <img class="avatar" src="https://user11379.na.imgto.link/public/20260518/img-2745.avif" alt="draco">
+                </div>
+                <div class="card-content">
+                    <div class="name-row">
+                        <span class="name">draco</span>
+                        <span class="badge triad">triad</span>
+                    </div>
+                    <p class="description">bobo ka tol</p>
+                    <audio class="audio-player" controls src="https://www.image2url.com/r2/default/files/1779007076216-48c37c43-9b82-480d-9f5c-bf2c29b463ea.mp3"></audio>
+                    <div class="discord-id">ID: 1248291804974157876</div>
+                </div>
+            </div>
+
+            <!-- eiz -->
+            <div class="card">
+                <div class="banner"></div>
+                <div class="avatar-container">
+                    <img class="avatar" src="https://user11379.na.imgto.link/public/20260518/img-7615.avif" alt="eiz">
+                </div>
+                <div class="card-content">
+                    <div class="name-row">
+                        <span class="name">eiz</span>
+                        <span class="badge triad">triad</span>
+                    </div>
+                    <p class="description">bobo ka tol</p>
+                    <audio class="audio-player" controls src="https://www.image2url.com/r2/default/files/1779007076216-48c37c43-9b82-480d-9f5c-bf2c29b463ea.mp3"></audio>
+                    <div class="discord-id">ID: 919107672463273986</div>
+                </div>
+            </div>
+
+            <!-- quip -->
+            <div class="card">
+                <div class="banner"></div>
+                <div class="avatar-container">
+                    <img class="avatar" src="https://user11379.na.imgto.link/public/20260518/img-5538.avif" alt="quip">
+                </div>
+                <div class="card-content">
+                    <div class="name-row">
+                        <span class="name">quip</span>
+                        <span class="badge triad">triad</span>
+                    </div>
+                    <p class="description">bobo ka tol</p>
+                    <audio class="audio-player" controls src="https://www.image2url.com/r2/default/files/1779007076216-48c37c43-9b82-480d-9f5c-bf2c29b463ea.mp3"></audio>
+                    <div class="discord-id">ID: 743538836063387749</div>
+                </div>
+            </div>
+
+            <!-- VISAGE -->
+            <div class="card">
+                <div class="banner"></div>
+                <div class="avatar-container">
+                    <img class="avatar" src="https://user11379.na.imgto.link/public/20260518/img-5544.avif" alt="VISAGE">
+                </div>
+                <div class="card-content">
+                    <div class="name-row">
+                        <span class="name">VISAGE</span>
+                        <span class="badge triad">triad</span>
+                    </div>
+                    <p class="description">bobo ka tol</p>
+                    <audio class="audio-player" controls src="https://www.image2url.com/r2/default/files/1779007076216-48c37c43-9b82-480d-9f5c-bf2c29b463ea.mp3"></audio>
+                </div>
+            </div>
+
+            <!-- KAZUE -->
+            <div class="card">
+                <div class="banner"></div>
+                <div class="avatar-container">
+                    <img class="avatar" src="https://user11379.na.imgto.link/public/20260518/img-5543.avif" alt="KAZUE">
+                </div>
+                <div class="card-content">
+                    <div class="name-row">
+                        <span class="name">KAZUE</span>
+                        <span class="badge triad">triad</span>
+                    </div>
+                    <p class="description">bobo ka tol</p>
+                    <audio class="audio-player" controls src="https://www.image2url.com/r2/default/files/1779007076216-48c37c43-9b82-480d-9f5c-bf2c29b463ea.mp3"></audio>
+                </div>
+            </div>
+
+            <!-- AZURA -->
+            <div class="card">
+                <div class="banner"></div>
+                <div class="avatar-container">
+                    <img class="avatar" src="https://user11379.na.imgto.link/public/20260518/img-3715.avif" alt="AZURA">
+                </div>
+                <div class="card-content">
+                    <div class="name-row">
+                        <span class="name">AZURA</span>
+                        <span class="badge triad">triad</span>
+                    </div>
+                    <p class="description">bobo ka tol</p>
+                    <audio class="audio-player" controls src="https://www.image2url.com/r2/default/files/1779007076216-48c37c43-9b82-480d-9f5c-bf2c29b463ea.mp3"></audio>
+                </div>
+            </div>
+
+            <!-- KEENO -->
+            <div class="card">
+                <div class="banner"></div>
+                <div class="avatar-container">
+                    <img class="avatar" src="https://user11379.na.imgto.link/public/20260518/img-3569.avif" alt="KEENO">
+                </div>
+                <div class="card-content">
+                    <div class="name-row">
+                        <span class="name">KEENO</span>
+                        <span class="badge triad">triad</span>
+                    </div>
+                    <p class="description">bobo ka tol</p>
+                    <audio class="audio-player" controls src="https://www.image2url.com/r2/default/files/1779007076216-48c37c43-9b82-480d-9f5c-bf2c29b463ea.mp3"></audio>
+                </div>
+            </div>
+
+            <!-- ARON -->
+            <div class="card">
+                <div class="banner"></div>
+                <div class="avatar-container">
+                    <img class="avatar" src="https://user11379.na.imgto.link/public/20260518/6c753e7d-9e83-43fa-bb7f-c291369d5189.avif" alt="ARON">
+                </div>
+                <div class="card-content">
+                    <div class="name-row">
+                        <span class="name">ARON</span>
+                        <span class="badge triad">triad</span>
+                    </div>
+                    <p class="description">bobo ka tol</p>
+                    <audio class="audio-player" controls src="https://www.image2url.com/r2/default/files/1779007076216-48c37c43-9b82-480d-9f5c-bf2c29b463ea.mp3"></audio>
+                </div>
+            </div>
+
+            <!-- DREI -->
+            <div class="card">
+                <div class="banner"></div>
+                <div class="avatar-container">
+                    <img class="avatar" src="https://user11379.na.imgto.link/public/20260518/e61da39143b7a85d3c89a5044c0c428e.avif" alt="DREI">
+                </div>
+                <div class="card-content">
+                    <div class="name-row">
+                        <span class="name">DREI</span>
+                        <span class="badge triad">triad</span>
+                    </div>
+                    <p class="description">bobo ka tol</p>
+                    <audio class="audio-player" controls src="https://www.image2url.com/r2/default/files/1779007076216-48c37c43-9b82-480d-9f5c-bf2c29b463ea.mp3"></audio>
+                </div>
+            </div>
+
+            <!-- GARDO -->
+            <div class="card">
+                <div class="banner"></div>
+                <div class="avatar-container">
+                    <img class="avatar" src="https://user11379.na.imgto.link/public/20260518/f4fe3172b4695a6c4bf0b9ff1f59bc7d.avif" alt="GARDO">
+                </div>
+                <div class="card-content">
+                    <div class="name-row">
+                        <span class="name">GARDO</span>
+                        <span class="badge triad">triad</span>
+                    </div>
+                    <p class="description">bobo ka tol</p>
+                    <audio class="audio-player" controls src="https://www.image2url.com/r2/default/files/1779007122081-50acb263-33fe-428a-bf5b-25849d534bbb.mp3"></audio>
+                </div>
+            </div>
+
+            <!-- KENCHIE -->
+            <div class="card">
+                <div class="banner"></div>
+                <div class="avatar-container">
+                    <img class="avatar" src="https://drift.rip/media/users/avatars/avatar_1074_687024f3ee6ae3.64264911.webp" alt="KENCHIE">
+                </div>
+                <div class="card-content">
+                    <div class="name-row">
+                        <span class="name">KENCHIE</span>
+                        <span class="badge triad">triad</span>
+                    </div>
+                    <p class="description">bobo ka tol</p>
+                    <audio class="audio-player" controls src="https://www.image2url.com/r2/default/files/1779007122081-50acb263-33fe-428a-bf5b-25849d534bbb.mp3"></audio>
+                </div>
+            </div>
+
+            <!-- XAYSHU -->
+            <div class="card">
+                <div class="banner"></div>
+                <div class="avatar-container">
+                    <img class="avatar" src="https://drift.rip/media/users/avatars/avatar_990_68652f8b171bf0.62790877.webp" alt="XAYSHU">
+                </div>
+                <div class="card-content">
+                    <div class="name-row">
+                        <span class="name">XAYSHU</span>
+                        <span class="badge triad">triad</span>
+                    </div>
+                    <p class="description">bobo ka tol</p>
+                    <audio class="audio-player" controls src="https://www.image2url.com/r2/default/files/1779007122081-50acb263-33fe-428a-bf5b-25849d534bbb.mp3"></audio>
+                </div>
+            </div>
+
+            <!-- val -->
+            <div class="card">
+                <div class="banner"></div>
+                <div class="avatar-container">
+                    <img class="avatar" src="https://drift.rip/media/users/avatars/avatar_971_6863dedbbfafb4.28088434.webp" alt="val">
+                </div>
+                <div class="card-content">
+                    <div class="name-row">
+                        <span class="name">val</span>
+                        <span class="badge triad">triad</span>
+                    </div>
+                    <p class="description">bobo ka tol</p>
+                    <audio class="audio-player" controls src="https://www.image2url.com/r2/default/files/1779007122081-50acb263-33fe-428a-bf5b-25849d534bbb.mp3"></audio>
+                    <div class="discord-id">ID: 1319554589137047583</div>
+                </div>
+            </div>
+
+            <!-- tecca -->
+            <div class="card">
+                <div class="banner"></div>
+                <div class="avatar-container">
+                    <img class="avatar" src="https://drift.rip/media/users/avatars/avatar_965_6862a8dc733b53.89575848.webp" alt="tecca">
+                </div>
+                <div class="card-content">
+                    <div class="name-row">
+                        <span class="name">tecca</span>
+                        <span class="badge triad">triad</span>
+                    </div>
+                    <p class="description">bobo ka tol</p>
+                    <audio class="audio-player" controls src="https://www.image2url.com/r2/default/files/1779007122081-50acb263-33fe-428a-bf5b-25849d534bbb.mp3"></audio>
+                </div>
+            </div>
+
+            <!-- luke -->
+            <div class="card">
+                <div class="banner"></div>
+                <div class="avatar-container">
+                    <img class="avatar" src="https://drift.rip/media/users/avatars/avatar_621_685ff9dc44d9c4.56101897.webp" alt="luke">
+                </div>
+                <div class="card-content">
+                    <div class="name-row">
+                        <span class="name">luke</span>
+                        <span class="badge supertriad">SUPERTRIAD</span>
+                    </div>
+                    <p class="description">bobo ka tol</p>
+                    <audio class="audio-player" controls src="https://www.image2url.com/r2/default/files/1779007122081-50acb263-33fe-428a-bf5b-25849d534bbb.mp3"></audio>
+                </div>
+            </div>
+
+            <!-- nate -->
+            <div class="card">
+                <div class="banner"></div>
+                <div class="avatar-container">
+                    <img class="avatar" src="https://drift.rip/media/users/avatars/avatar_869_6858db3c78b6f0.88795644.webp" alt="nate">
+                </div>
+                <div class="card-content">
+                    <div class="name-row">
+                        <span class="name">nate</span>
+                        <span class="badge supertriad">SUPERTRIAD</span>
+                    </div>
+                    <p class="description">bobo ka tol</p>
+                    <audio class="audio-player" controls src="https://www.image2url.com/r2/default/files/1779007122081-50acb263-33fe-428a-bf5b-25849d534bbb.mp3"></audio>
+                </div>
+            </div>
+
+            <!-- astral -->
+            <div class="card">
+                <div class="banner"></div>
+                <div class="avatar-container">
+                    <img class="avatar" src="https://user11379.na.imgto.link/public/20260518/img-6039.avif" alt="astral">
+                </div>
+                <div class="card-content">
+                    <div class="name-row">
+                        <span class="name">astral</span>
+                        <span class="badge supertriad">SUPERTRIAD</span>
+                    </div>
+                    <p class="description">bobo ka tol</p>
+                    <audio class="audio-player" controls src="https://www.image2url.com/r2/default/files/1779007122081-50acb263-33fe-428a-bf5b-25849d534bbb.mp3"></audio>
+                </div>
+            </div>
+
+            <!-- darling -->
+            <div class="card">
+                <div class="banner"></div>
+                <div class="avatar-container">
+                    <img class="avatar" src="https://user11379.na.imgto.link/public/20260518/img-5028.avif" alt="darling">
+                </div>
+                <div class="card-content">
+                    <div class="name-row">
+                        <span class="name">darling</span>
+                        <span class="badge supertriad">SUPERTRIAD</span>
+                    </div>
+                    <p class="description">bobo ka tol</p>
+                    <audio class="audio-player" controls src="https://www.image2url.com/r2/default/files/1779007122081-50acb263-33fe-428a-bf5b-25849d534bbb.mp3"></audio>
+                </div>
+            </div>
+
+            <!-- nath -->
+            <div class="card">
+                <div class="banner"></div>
+                <div class="avatar-container">
+                    <img class="avatar" src="https://user11379.na.imgto.link/public/20260518/img-5530.avif" alt="nath">
+                </div>
+                <div class="card-content">
+                    <div class="name-row">
+                        <span class="name">nath</span>
+                        <span class="badge supertriad">SUPERTRIAD</span>
+                    </div>
+                    <p class="description">bobo ka tol</p>
+                    <audio class="audio-player" controls src="https://www.image2url.com/r2/default/files/1779007122081-50acb263-33fe-428a-bf5b-25849d534bbb.mp3"></audio>
+                </div>
+            </div>
+
+            <!-- uno -->
+            <div class="card">
+                <div class="banner"></div>
+                <div class="avatar-container">
+                    <img class="avatar" src="https://drift.rip/media/users/avatars/avatar_1077_687064072cbd82.84424841.webp" alt="uno">
+                </div>
+                <div class="card-content">
+                    <div class="name-row">
+                        <span class="name">uno</span>
+                        <span class="badge supertriad">SUPERTRIAD</span>
+                    </div>
+                    <p class="description">bobo ka tol</p>
+                    <audio class="audio-player" controls src="https://www.image2url.com/r2/default/files/1779007122081-50acb263-33fe-428a-bf5b-25849d534bbb.mp3"></audio>
+                </div>
+            </div>
+
+            <!-- maxi -->
+            <div class="card">
+                <div class="banner"></div>
+                <div class="avatar-container">
+                    <img class="avatar" src="https://drift.rip/media/users/avatars/avatar_1074_687024f3ee6ae3.64264911.webp" alt="maxi">
+                </div>
+                <div class="card-content">
+                    <div class="name-row">
+                        <span class="name">maxi</span>
+                        <span class="badge supertriad">SUPERTRIAD</span>
+                    </div>
+                    <p class="description">bobo ka tol</p>
+                    <audio class="audio-player" controls src="https://www.image2url.com/r2/default/files/1779007122081-50acb263-33fe-428a-bf5b-25849d534bbb.mp3"></audio>
+                </div>
+            </div>
+
+            <!-- pao -->
+            <div class="card">
+                <div class="banner"></div>
+                <div class="avatar-container">
+                    <img class="avatar" src="https://drift.rip/media/users/avatars/avatar_1074_6870221243ce65.68446677.gif" alt="pao">
+                </div>
+                <div class="card-content">
+                    <div class="name-row">
+                        <span class="name">pao</span>
+                        <span class="badge supertriad">SUPERTRIAD</span>
+                    </div>
+                    <p class="description">bobo ka tol</p>
+                    <audio class="audio-player" controls src="https://www.image2url.com/r2/default/files/1779007122081-50acb263-33fe-428a-bf5b-25849d534bbb.mp3"></audio>
+                </div>
+            </div>
+
+            <!-- ian -->
+            <div class="card">
+                <div class="banner"></div>
+                <div class="avatar-container">
+                    <img class="avatar" src="https://drift.rip/media/users/avatars/avatar_1074_6870212b34ce72.37048086.webp" alt="ian">
+                </div>
+                <div class="card-content">
+                    <div class="name-row">
+                        <span class="name">ian</span>
+                        <span class="badge supertriad">SUPERTRIAD</span>
+                    </div>
+                    <p class="description">bobo ka tol</p>
+                    <audio class="audio-player" controls src="https://www.image2url.com/r2/default/files/1779007122081-50acb263-33fe-428a-bf5b-25849d534bbb.mp3"></audio>
+                </div>
+            </div>
+
+            <!-- ultra -->
+            <div class="card">
+                <div class="banner"></div>
+                <div class="avatar-container">
+                    <img class="avatar" src="https://drift.rip/media/users/avatars/avatar_1053_686d89e8c0dab9.22746488.webp" alt="ultra">
+                </div>
+                <div class="card-content">
+                    <div class="name-row">
+                        <span class="name">ultra</span>
+                        <span class="badge supertriad">SUPERTRIAD</span>
+                    </div>
+                    <p class="description">bobo ka tol</p>
+                    <audio class="audio-player" controls src="https://www.image2url.com/r2/default/files/1779007122081-50acb263-33fe-428a-bf5b-25849d534bbb.mp3"></audio>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
